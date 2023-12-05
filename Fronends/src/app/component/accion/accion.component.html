@@ -1,0 +1,14 @@
+<div *ngIf="models" class="container">
+    <h1>{{models.name}}</h1>
+
+    <input type="text" class="form-control" name="name"  [(ngModel)]="models.name" placeholder="nombre">
+    <input type="text" class="form-control" name="lastName"  [(ngModel)]="models.lastName" placeholder="apellido">
+    <input type="text" class="form-control"  name="sexo"  [(ngModel)]="models.sexo" placeholder="sexo">
+    <input type="text" class="form-control" name="cedula"  [(ngModel)]="models.cedula" placeholder="cedula">
+
+    <button *ngIf="models.id" class="btn btn-primary" (click)="updateAction(models)">update</button>
+    <button *ngIf="!models.id"class="btn btn-dark" (click)="createAction(models)">create</button>
+    <button *ngIf="models.id" class="btn btn-danger" (click)="deleteAction(models)">delete</button>
+
+
+</div>

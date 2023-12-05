@@ -1,0 +1,47 @@
+.login,
+.image {
+  min-height: 100vh;
+  background-image: url('../image/fondologi.jpg');
+}
+
+
+
+
+body {
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../image/f4.jpg");
+    background-size: cover; /* Ajusta el tamaño para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura al 100% de la ventana de visualización */
+    margin: 0; /* Elimina márgenes predeterminados del cuerpo */
+    display: flex;
+}
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a{
+  position: relative;
+  padding-left: 135px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p{
+  position: relative;
+  text-align: center;
+  padding-left: -100px;
+  padding-right: 30px;
+  font-family: cursive;
+  font-size: 10px ;
+}

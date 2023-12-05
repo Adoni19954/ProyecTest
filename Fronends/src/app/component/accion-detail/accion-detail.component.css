@@ -1,0 +1,10 @@
+body {
+    background-image: url("../image/fondo.jpg");
+    background-size: cover; /* Ajusta el tamaño para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura al 100% de la ventana de visualización */
+    margin: 0; /* Elimina márgenes predeterminados del cuerpo */
+    display: flex;
+
+
+}

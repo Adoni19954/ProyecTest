@@ -1,0 +1,27 @@
+body{
+    background-image: url("../image/error.jpg");
+    background-size: cover; /* Ajusta el tamaño para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Ajusta la altura al 100% de la ventana de visualización */
+    margin: 0; /* Elimina márgenes predeterminados del cuerpo */
+    display: flex;
+}
+
+h1{
+    position: relative;
+   padding-left: 500px;
+    padding-top: 300px;
+    font-family: cursive;
+    font-size: 120px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2{
+    position: relative;
+  padding-left: 150px;
+    font-family: cursive;
+    font-size: 100px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

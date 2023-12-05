@@ -1,0 +1,40 @@
+<app-pag-menu></app-pag-menu>
+<body>
+
+    <div class="container">
+      
+    <table class="table table-hover">
+      <thead>
+        <button [disabled]="roles === 'user'" class="btn btn-primary" (click)="NewInitAction()">create</button>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>LASTNAME</th>
+          <th>SEXO</th>
+          <th>CEDULA</th>
+        </tr>
+      
+        <tr *ngFor="let key of models">
+          <td>{{key.id}}</td>
+          <td>{{key.name}}</td>
+          <td>{{key.lastName}}</td>
+          <td>{{key.sexo}}</td>
+          <td>{{key.cedula}}</td>
+          <td ><button [disabled]="roles === 'user'" class="btn btn-danger" (click)="EditAction(key)">edit</button></td>
+       
+          
+        </tr>
+      </thead>
+    </table>
+    
+    <app-accion [models]="ToListAccion" (update)="UpdateAction($event)"></app-accion>
+  
+    </div>
+
+    
+  
+    </body>
+
+
+   
+    
