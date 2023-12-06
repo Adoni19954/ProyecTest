@@ -3,7 +3,7 @@ import { ServiceService } from './services/service.service';
 import { model } from './models/model';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { jwtDecode } from 'jwt-decode';
+
 
 
 @Component({
@@ -17,11 +17,5 @@ export class AppComponent {
   constructor(private route : Router){}
 
 
-
-
-  
- 
-
-  
  
 }

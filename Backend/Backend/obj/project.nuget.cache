@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VDoOQExrID9OI02MXzIsbIjlESyHlLo7bUmFJB/NIBS8UKMSB/rGK8KD9ZEFVaZdiMLkokHHNuQknTntuEo+GA==",
+  "dgSpecHash": "4aE5LH3FomrFcFi4V2HBin1EorQIU9Amz4PGaCpuHKosUNkKMAUlNKANbW9eItx22BCc5jy1eLpLbEez5sqhgA==",
   "success": true,
-  "projectFilePath": "C:\\Angular\\Repositorio\\Backend\\Backend\\Backend.csproj",
+  "projectFilePath": "C:\\Angular\\ProyecTest\\Backend\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\amartinez\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\amartinez\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

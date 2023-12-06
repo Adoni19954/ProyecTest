@@ -12,6 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 export class PagMenuComponent {
 
   usernameToke : any | undefined;
+  roleToke : any | undefined;
   constructor(private router : Router){}
   
   cerrarSession(){
@@ -20,11 +21,9 @@ export class PagMenuComponent {
     
   }
      
-  
-
   ngOnInit(){
       this.GetTokenUsername();
-      
+
   }
 
   GetTokenUsername () {
@@ -48,5 +47,7 @@ export class PagMenuComponent {
     return this.usernameToke = usernameFromToken
    }
 
+
+   
   
 }

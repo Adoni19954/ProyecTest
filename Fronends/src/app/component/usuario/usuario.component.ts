@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { authTests } from '../../models/authTest';
 import { ServiceService } from '../../services/service.service';
 import { ToastrService } from 'ngx-toastr';
+import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common'
+
 
 
 @Component({
@@ -12,12 +16,21 @@ import { ToastrService } from 'ngx-toastr';
 export class UsuarioComponent {
   User: authTests[] = [];
   ToListAuths?: authTests;
+  Role : any | undefined;
 
-  constructor(private services: ServiceService, private toastr: ToastrService) { }
+  constructor(private services: ServiceService, private toastr: ToastrService, private router : Router, private location: Location) { }
 
   ngOnInit() {
     this.services.GetUsuario().subscribe((result: authTests[]) => (this.User = result))
-    
+    this.GetDecodeRole();
+    this.BuscarRole();
+
+   if(this.Role == 'user'){
+    this.location.back();
+    this.toastr.error('acesso denegado');
+   }else{
+      this.router.navigate(['/usuario'])
+   }
   }
 
   deleteUser(auth: authTests | undefined) {
@@ -34,20 +47,47 @@ export class UsuarioComponent {
     }
   }
 update_user : boolean = false;
-  UpdateUser(auth: authTests | undefined) {
+  updateUser(auth : authTests[]){
+    this.User = auth
+  }
 
-    if (auth) {
-      this.services.UpdateUserRole(auth).subscribe((result: authTests[]) => {
-        this.User = result;
-        this.toastr.success("Role Actualizado Existosamente");
-      },
+  ediUser(auth : authTests){
+    this.ToListAuths =  { ...auth }
+    console.log(auth);
+  }
+
+  updateUserForm() {
+    if (this.ToListAuths) {
+      this.services.UpdateUserRole(this.ToListAuths).subscribe(
+        (result: authTests[]) => {
+          this.User = result;
+          this.toastr.success('Usuario actualizado con éxito.');
+        },
         (error) => {
-          this.toastr.error('Usuario no Actualizado', error)
-        })
+          this.toastr.error('Usuario no actualizado', error);
+        }
+      );
     }
   }
-  
-      
+
+  GetDecodeRole(){
+    const tokeRole = localStorage.getItem('Token');
+
+    if(tokeRole){
+       const decode : any = jwtDecode(tokeRole)
+       if(decode && decode.role){
+        const role : string = decode.role;
+        return role
+       }
+    }
+    return null
+  }
+
+  BuscarRole(){
+    const DecodeRoles = this.GetDecodeRole();
+    return  this.Role = DecodeRoles
+  }
+
 }
 
 

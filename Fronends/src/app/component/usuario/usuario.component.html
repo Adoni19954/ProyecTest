@@ -15,10 +15,10 @@
             <td>{{key.username}}</td>
             <td>{{key.email}}</td>
             <td>
-              <button (click)="deleteUser(key)" class="btn"><img
+              <button [disabled]="Role === 'user'" (click)="deleteUser(key)" class="btn"><img
                   src="https://cdn.icon-icons.com/icons2/1880/PNG/512/iconfinder-trash-4341321_120557.png"
                   alt=""></button>
-              <button (click)="open_modal()" class="btn"><img
+              <button [disabled]="Role === 'user'" class="btn" (click)="ediUser(key)"><img
                   src="https://cdn.icon-icons.com/icons2/217/PNG/512/male-user-edit_25348.png" alt=""></button>
             </td>
           </tr>
@@ -29,26 +29,25 @@
 </div>
 
 
-<div class="container mt-5">
+<div  *ngIf="ToListAuths" class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form>
+      <form (submit)="updateUserForm()">
         <div class="form-group">
           <label for="usuario">Usuario:</label>
-          <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario">
+          <input type="text" name="username" class="form-control" [(ngModel)]="ToListAuths.username" id="usuario" placeholder="Ingresa tu usuario">
         </div>
         <div class="form-group">
           <label for="correo">Correo Electrónico:</label>
-          <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo electrónico">
+          <input type="text" name="email" class="form-control"[(ngModel)]="ToListAuths.email" id="correo" placeholder="Ingresa tu correo electrónico">
         </div>
         <div class="form-group">
           <label for="correo">Role:</label>
-          <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo electrónico">
+          <input type="text" name="role" class="form-control" [(ngModel)]="ToListAuths.role" id="correo" placeholder="Ingresa tu correo electrónico">
         </div>
-        <div class="form-group">
+       
           <button type="submit" class="btn btn-primary">Enviar</button>
-        </div>
-      </form>
+        </form>
     </div>
   </div>
 
