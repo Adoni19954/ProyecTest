@@ -16,6 +16,7 @@ export class ServiceService {
  
   Url = "Accion";
   Urluths = "AuthTest";
+  role : any |undefined;
 
   constructor(private http : HttpClient, private jwtHelper : JwtHelperService) { }
 
@@ -75,18 +76,33 @@ sigUp(UserObj : any){
     return null;
   }
 
+  public GetRoleToken(){
+    const token = localStorage.getItem('Token');
+
+    if(token){
+      const decode: any = jwtDecode(token);
+      if(decode && decode.role){
+        const role : string = decode.role;
+        return role
+      }
+    }
+    return null
+  }
+
+  OpenToken(){
+    const tokenUser = this.GetRoleToken();
+    return this.role = tokenUser;
+
+  }
+
+
+  ValidatorUrlRole(){
+    if( this.role == 'admin'){
+        
+    }
+  }
 
   
-  
-
-  
-  // ...
-  
-  // Ejemplo de cómo utilizarlo
-
 
    
-
-
-
 }

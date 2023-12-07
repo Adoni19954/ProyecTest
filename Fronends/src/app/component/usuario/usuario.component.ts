@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common'
+import { ServicesAuthsService } from '../../services/services-auths.service';
 
 
 
@@ -18,13 +19,20 @@ export class UsuarioComponent {
   ToListAuths?: authTests;
   Role : any | undefined;
 
-  constructor(private services: ServiceService, private toastr: ToastrService, private router : Router, private location: Location) { }
+
+  constructor(private services: ServiceService,
+     private toastr: ToastrService, 
+     private router : Router, 
+     private location: Location,
+     private auth : ServicesAuthsService
+     ) { }
 
   ngOnInit() {
     this.services.GetUsuario().subscribe((result: authTests[]) => (this.User = result))
-    this.GetDecodeRole();
-    this.BuscarRole();
 
+
+    this.Role = this.services.OpenToken();
+      
    if(this.Role == 'user'){
     this.location.back();
     this.toastr.error('acesso denegado');
@@ -70,23 +78,6 @@ update_user : boolean = false;
     }
   }
 
-  GetDecodeRole(){
-    const tokeRole = localStorage.getItem('Token');
-
-    if(tokeRole){
-       const decode : any = jwtDecode(tokeRole)
-       if(decode && decode.role){
-        const role : string = decode.role;
-        return role
-       }
-    }
-    return null
-  }
-
-  BuscarRole(){
-    const DecodeRoles = this.GetDecodeRole();
-    return  this.Role = DecodeRoles
-  }
 
 }
 

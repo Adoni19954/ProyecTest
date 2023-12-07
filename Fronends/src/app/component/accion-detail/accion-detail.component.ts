@@ -7,7 +7,6 @@ import { ServicesAuthsService } from '../../services/services-auths.service';
 import { jwtDecode } from 'jwt-decode';
 
 
-
 @Component({
   selector: 'app-accion-detail',
   templateUrl: './accion-detail.component.html',
@@ -24,13 +23,9 @@ export class AccionDetailComponent {
   ngOnInit(){
     this.services.get().subscribe((result : model[]) => (this.models = result))
      this.auths.tokenDecode();
-     this.GetTokenRole();
-      this.MostrarRoleToken();
-      
+      this.roles = this.services.OpenToken();   
   }
 
-
-    
   UpdateAction(models : model[]){
     this.models = models
   }
@@ -42,28 +37,5 @@ export class AccionDetailComponent {
   EditAction(models : model){
     this.ToListAccion = models
   }
-
-  GetTokenRole () {
-      const token = localStorage.getItem('Token');
-      
-      if(token){
-        const decode: any = jwtDecode(token)
-        if(decode && decode.role)
-        {
-          const rol : string = decode.role      
-          return rol
-          
-        }
-
-      }
-      return null
-     }
-
-     MostrarRoleToken(){
-      const rolFromToken = this.GetTokenRole();
-      this.roles = rolFromToken
-     }
-
-  
 
 }
