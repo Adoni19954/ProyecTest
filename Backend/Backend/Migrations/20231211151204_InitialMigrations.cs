@@ -28,6 +28,20 @@ namespace Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "dateImgs",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    rutaimg = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dateImgs", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "models",
                 columns: table => new
                 {
@@ -49,6 +63,9 @@ namespace Backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "auths");
+
+            migrationBuilder.DropTable(
+                name: "dateImgs");
 
             migrationBuilder.DropTable(
                 name: "models");

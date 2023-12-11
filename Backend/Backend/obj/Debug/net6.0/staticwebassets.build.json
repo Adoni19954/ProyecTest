@@ -1,11 +1,54 @@
 {
   "Version": 1,
-  "Hash": "n5xgAQ6zUIaWw0GRiBAnxS+iKccCeaRf+F00sBYdNq4=",
+  "Hash": "QVnWlE8M/eNaE6cBiFeXQHuf/muNknoMwTUVv6BLOiE=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Backend\\wwwroot",
+      "Source": "Backend",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\200912f9-9bcf-4885-9818-858000990f35_Screenshot 2023-12-05 093804.png",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "uploads/200912f9-9bcf-4885-9818-858000990f35_Screenshot 2023-12-05 093804.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\200912f9-9bcf-4885-9818-858000990f35_Screenshot 2023-12-05 093804.png"
+    },
+    {
+      "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\68ce322a-26aa-473d-b159-56984e7333e7_Screenshot 2023-12-05 093804.png",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "uploads/68ce322a-26aa-473d-b159-56984e7333e7_Screenshot 2023-12-05 093804.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\68ce322a-26aa-473d-b159-56984e7333e7_Screenshot 2023-12-05 093804.png"
+    }
+  ]
 }

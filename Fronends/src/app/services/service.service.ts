@@ -6,6 +6,7 @@ import { model } from '../models/model';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { jwtDecode } from 'jwt-decode';
 import { authTests } from '../models/authTest';
+import { image } from '../models/image';
 
 
 @Injectable({
@@ -102,7 +103,17 @@ sigUp(UserObj : any){
     }
   }
 
-  
+  /*------------------------------------------------------------------------------*/
 
+  subirImagen(imagen: File): Observable<image> {
+    const formData = new FormData();
+    formData.append('file', imagen);
+
+    return this.http.post<image> (`${environment.ApiUrl}/image`,formData)
+  }
+
+  obtenerUrlImagen(id: number): string {
+    return `${environment.ApiUrl}/image/${id}`;
+  }
    
 }

@@ -22,6 +22,7 @@ import { PagErrorComponent } from './component/pag-error/pag-error.component';
 import { UsuarioComponent } from './component/usuario/usuario.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { ImgTestComponent } from './component/img-test/img-test.component';
 
 
 
@@ -35,7 +36,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     RegistroComponent,
     PagErrorComponent,
     PagMenuComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ImgTestComponent
 
   ],
   imports: [

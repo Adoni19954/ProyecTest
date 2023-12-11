@@ -54,6 +54,27 @@ namespace Backend.Migrations
                     b.ToTable("auths", (string)null);
                 });
 
+            modelBuilder.Entity("Backend.Models.DateImg", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("rutaimg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("dateImgs", (string)null);
+                });
+
             modelBuilder.Entity("Backend.Models.ModelsTest", b =>
                 {
                     b.Property<int>("Id")

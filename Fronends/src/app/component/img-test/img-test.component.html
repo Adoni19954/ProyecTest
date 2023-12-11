@@ -1,0 +1,6 @@
+<!-- img-test.component.html -->
+<input type="file" (change)="onFileSelected($event)" />
+<button (click)="subirImagen()">Subir Imagen</button>
+
+
+<img *ngIf="modelo" [src]="obtenerUrlImagen()" alt="Imagen">

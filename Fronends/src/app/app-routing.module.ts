@@ -7,6 +7,7 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { PagErrorComponent } from './component/pag-error/pag-error.component';
 import { ServicesAuthsService as AuthGuard  } from './services/services-auths.service';
 import { UsuarioComponent } from './component/usuario/usuario.component';
+import { ImgTestComponent } from './component/img-test/img-test.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path : "usuario",
     component : UsuarioComponent
+  },
+  {
+    path : "img",
+    component : ImgTestComponent
   },
   {
     path : "**",

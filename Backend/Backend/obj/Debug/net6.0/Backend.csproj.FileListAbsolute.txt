@@ -262,3 +262,4 @@ C:\Angular\ProyecTest\Backend\Backend\obj\Debug\net6.0\refint\Backend.dll
 C:\Angular\ProyecTest\Backend\Backend\obj\Debug\net6.0\Backend.pdb
 C:\Angular\ProyecTest\Backend\Backend\obj\Debug\net6.0\Backend.genruntimeconfig.cache
 C:\Angular\ProyecTest\Backend\Backend\obj\Debug\net6.0\ref\Backend.dll
+C:\Angular\ProyecTest\Backend\Backend\bin\Debug\net6.0\Backend.staticwebassets.runtime.json
