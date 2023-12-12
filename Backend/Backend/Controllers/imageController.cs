@@ -71,7 +71,7 @@ namespace Backend.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<DataContext>>> Get()
+        public async Task<ActionResult<List<DateImg>>> Getimage()
         {
             try
             {
@@ -80,9 +80,11 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno del servidor: {ex}");
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
+
 
 
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QVnWlE8M/eNaE6cBiFeXQHuf/muNknoMwTUVv6BLOiE=",
+  "Hash": "PLzucVyRdSTq/g4y6PnrBKWLMkpJa9ndm0X5L2Fr5Hk=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\68ce322a-26aa-473d-b159-56984e7333e7_Screenshot 2023-12-05 093804.png"
+    },
+    {
+      "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\899ebed2-a77e-433e-9fca-03d9876dd330_Screenshot 2023-11-13 151011.png",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "uploads/899ebed2-a77e-433e-9fca-03d9876dd330_Screenshot 2023-11-13 151011.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\899ebed2-a77e-433e-9fca-03d9876dd330_Screenshot 2023-11-13 151011.png"
     }
   ]
 }
