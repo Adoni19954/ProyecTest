@@ -1,6 +1,8 @@
-<!-- img-test.component.html -->
+<!-- img-test.component.html 
 <input type="file" (change)="onFileSelected($event)" />
 <button (click)="subirImagen()">Subir Imagen</button>
+----->
+<div *ngFor="let image of images">
+    <img *ngIf="image.rutaimg !== undefined" [src]="getImageUrl(image.rutaimg)" alt="Image" />
 
-
-<img *ngIf="modelo" [src]="obtenerUrlImagen()" alt="Imagen">
+  </div>

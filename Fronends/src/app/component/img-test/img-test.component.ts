@@ -12,14 +12,31 @@ import { image } from '../../models/image';
 export class ImgTestComponent {
 
   private archivoSeleccionado : File | null = null;
-  public modelo: image | undefined;
+ 
+  images: any[] = [];
 
   constructor(private services : ServiceService, private toast : ToastrService){}
 
+  ngOnInit(): void {
+    this.loadImages();
+    console.log('Images:', this.images);
+    
+  }
+
+  loadImages(): void {
+    this.services.getImages().subscribe(
+      (data) => {
+        this.images = data;
+      },
+      (error) => {
+        console.error('Error fetching images:', error);
+      }
+    );
+  }
   onFileSelected(event: any): void {
     this.archivoSeleccionado = event.target.files?.[0] || null;
   }
-
+/*
   subirImagen(): void {
     if (this.archivoSeleccionado) {
       this.services.subirImagen(this.archivoSeleccionado)
@@ -36,14 +53,11 @@ export class ImgTestComponent {
         );
     }
   }
-
-  obtenerUrlImagen(): string {
-   
-    if (this.modelo && this.modelo.id !== undefined) {
-      return this.services.obtenerUrlImagen(this.modelo.id);
-    }
-    return ''; 
+*/
+  getImageUrl(rutaimg: string): string {
+    return `https://localhost:7162/api/uploads/${rutaimg}`;
   }
+  
 
   
 }

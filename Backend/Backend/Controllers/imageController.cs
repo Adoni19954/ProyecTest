@@ -71,12 +71,16 @@ namespace Backend.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<DateImg>>> Getimage()
+        public async Task<ActionResult<List<DateImgDto>>> Getimage()
         {
             try
             {
                 List<DateImg> data = await _Context.dateImgs.ToListAsync();
-                return Ok(data);
+
+                // Mapear las entidades a DTOs
+                var dtos = data.Select(img => new DateImgDto { Id = img.id, RutaImg = img.rutaimg }).ToList();
+
+                return Ok(dtos);
             }
             catch (Exception ex)
             {
@@ -84,9 +88,11 @@ namespace Backend.Controllers
                 return StatusCode(500, $"Error interno del servidor: {ex.Message}");
             }
         }
-
-
-
-
     }
+
+
+
+
+
+
 }

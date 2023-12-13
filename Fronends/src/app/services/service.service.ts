@@ -112,8 +112,9 @@ sigUp(UserObj : any){
     return this.http.post<image> (`${environment.ApiUrl}/image`,formData)
   }
 
-  obtenerUrlImagen(id: number): string {
-    return `${environment.ApiUrl}/image/${id}`;
+
+  getImages(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.ApiUrl}/image/`);
   }
-   
+
 }
