@@ -63,6 +63,11 @@ sigUp(UserObj : any){
     return this.http.put<authTests[]>(`${environment.ApiUrl}/${this.Urluths}`,auth);
   }
 
+  SaveImageUser(formData : FormData) : Observable<any>{
+    return this.http.post<authTests>(`${environment.ApiUrl}/AuthTest/savesImage`,formData)
+
+  }
+
 
   public  isAuthenticated () : boolean{
     const token = localStorage.getItem('Token')
@@ -105,12 +110,7 @@ sigUp(UserObj : any){
 
   /*------------------------------------------------------------------------------*/
 
-  subirImagen(imagen: File): Observable<image> {
-    const formData = new FormData();
-    formData.append('file', imagen);
 
-    return this.http.post<image> (`${environment.ApiUrl}/image`,formData)
-  }
 
 
   getImages(): Observable<any[]> {

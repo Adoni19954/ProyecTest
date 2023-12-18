@@ -4,5 +4,6 @@ export class authTests{
     password? : string;
     email? : string;
     role? : string;
+    rutaImage? : string;
 
 }

@@ -17,28 +17,29 @@ import { ServicesAuthsService } from '../../services/services-auths.service';
 export class UsuarioComponent {
   User: authTests[] = [];
   ToListAuths?: authTests;
-  Role : any | undefined;
+  Role: any | undefined;
+  private archivoSeleccionado: File | null = null;
 
 
   constructor(private services: ServiceService,
-     private toastr: ToastrService, 
-     private router : Router, 
-     private location: Location,
-     private auth : ServicesAuthsService
-     ) { }
+    private toastr: ToastrService,
+    private router: Router,
+    private location: Location,
+    private auth: ServicesAuthsService
+  ) { }
 
   ngOnInit() {
     this.services.GetUsuario().subscribe((result: authTests[]) => (this.User = result))
-
+   
 
     this.Role = this.services.OpenToken();
-      
-   if(this.Role == 'user'){
-    this.location.back();
-    this.toastr.error('acesso denegado');
-   }else{
+
+    if (this.Role == 'user') {
+      this.location.back();
+      this.toastr.error('acesso denegado');
+    } else {
       this.router.navigate(['/usuario'])
-   }
+    }
   }
 
   deleteUser(auth: authTests | undefined) {
@@ -54,13 +55,13 @@ export class UsuarioComponent {
       );
     }
   }
-update_user : boolean = false;
-  updateUser(auth : authTests[]){
+  update_user: boolean = false;
+  updateUser(auth: authTests[]) {
     this.User = auth
   }
 
-  ediUser(auth : authTests){
-    this.ToListAuths =  { ...auth }
+  ediUser(auth: authTests) {
+    this.ToListAuths = { ...auth }
     console.log(auth);
   }
 
@@ -70,9 +71,31 @@ update_user : boolean = false;
         (result: authTests[]) => {
           this.User = result;
           this.toastr.success('Usuario actualizado con éxito.');
+
         },
         (error) => {
           this.toastr.error('Usuario no actualizado', error);
+        }
+      );
+    }
+  }
+
+
+  onFileSelected(event: any): void {
+    this.archivoSeleccionado = event.target.files?.[0] || null;
+  }
+
+  subirImagen(): void {
+    if (this.archivoSeleccionado) {
+      const formData = new FormData();
+      formData.append('imagen', this.archivoSeleccionado);
+
+      this.services.SaveImageUser(formData).subscribe(
+        (resultado) => {
+          this.toastr.success('Imagen subida exitosamente');
+        },
+        (error) => {
+          this.toastr.error('Error al subir la imagen');
         }
       );
     }

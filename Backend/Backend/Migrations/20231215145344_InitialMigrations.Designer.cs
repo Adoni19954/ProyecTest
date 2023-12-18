@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231211151204_InitialMigrations")]
+    [Migration("20231215145344_InitialMigrations")]
     partial class InitialMigrations
     {
         /// <inheritdoc />
@@ -48,6 +48,10 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("rutaImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,27 +59,6 @@ namespace Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("auths", (string)null);
-                });
-
-            modelBuilder.Entity("Backend.Models.DateImg", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("rutaimg")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("dateImgs", (string)null);
                 });
 
             modelBuilder.Entity("Backend.Models.ModelsTest", b =>

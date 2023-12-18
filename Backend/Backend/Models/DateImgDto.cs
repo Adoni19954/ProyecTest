@@ -3,7 +3,7 @@
     public class DateImgDto
     {
         public int Id { get; set; }
-        public string RutaImg { get; set; } = string.Empty;
+        public string Rutaimg { get; set; } = string.Empty;
     }
 
 }

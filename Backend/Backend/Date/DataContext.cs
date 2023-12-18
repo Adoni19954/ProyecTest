@@ -10,13 +10,13 @@ namespace Backend.Date
         public DbSet<ModelsTest> models {  get; set; }
         public DbSet<AuthTest> auths { get; set; }
 
-        public DbSet<DateImg> dateImgs { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ModelsTest>().ToTable("models");
             modelBuilder.Entity<AuthTest>().ToTable("auths");
-            modelBuilder.Entity<DateImg>().ToTable("dateImgs");
+         
         }
 
     }
