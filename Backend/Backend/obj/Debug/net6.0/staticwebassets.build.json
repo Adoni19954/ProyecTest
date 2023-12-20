@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CwCJ+4f9Hp0q7B9C97Mj81F1N0d6piqOS0PznssWYPg=",
+  "Hash": "qKppy57nX5Cs/MBtohVSDMZoJdhHGLoPNJRG9cV7oNM=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2023-11-10 080758.png"
     },
     {
+      "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\Screenshot 2023-11-13 151011.png",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "uploads/Screenshot 2023-11-13 151011.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2023-11-13 151011.png"
+    },
+    {
       "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\Screenshot 2023-11-14 134518.png",
       "SourceId": "Backend",
       "SourceType": "Discovered",
@@ -270,6 +287,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2023-11-15 092308.png"
+    },
+    {
+      "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\Screenshot 2023-11-21 131405.png",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "uploads/Screenshot 2023-11-21 131405.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2023-11-21 131405.png"
     },
     {
       "Identity": "C:\\Angular\\ProyecTest\\Backend\\Backend\\wwwroot\\uploads\\Screenshot 2023-12-05 093804.png",

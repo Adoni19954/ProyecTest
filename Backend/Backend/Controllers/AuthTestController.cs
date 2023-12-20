@@ -55,8 +55,8 @@ namespace Backend.Controllers
         }
 
         [HttpPost("register")]
-
-        public async Task<IActionResult> registro([FromBody] AuthTest authsT)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> registro([FromForm] AuthTest authsT)
         {
             if (authsT == null)
                 return BadRequest("Error del sistema");
@@ -68,8 +68,8 @@ namespace Backend.Controllers
             {
                 message = "Usuario Registrado Correctamente"
             });
-
         }
+
 
         [HttpPost]
 
@@ -106,8 +106,7 @@ namespace Backend.Controllers
                 return BadRequest();
 
             dbauths.role = AuthsT.role;
-            dbauths.rutaImg = AuthsT.rutaImg;
-
+        
             await _Context.SaveChangesAsync();
             return Ok(await _Context.auths.ToArrayAsync());
         }
@@ -127,50 +126,6 @@ namespace Backend.Controllers
 
         }
 
-        [HttpPost("savesImage")]
-        public async Task<IActionResult> SaveImage()
-        {
-            try
-            {
-                var archivo = Request.Form.Files[0];
-
-                if (archivo.Length > 0)
-                {
-                    var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-                    var nombreArchivoUnico = archivo.FileName;
-                    var rutaArchivo = Path.Combine(uploads, nombreArchivoUnico);
-
-                    if (!Directory.Exists(uploads))
-                    {
-                        Directory.CreateDirectory(uploads);
-                    }
-
-                    using (var flujoArchivo = new FileStream(rutaArchivo, FileMode.Create))
-                    {
-                        await archivo.CopyToAsync(flujoArchivo);
-                    }
-
-                    var entidad = new AuthTest
-                    {
-                        rutaImg = nombreArchivoUnico
-                        
-                    };
-
-                    _Context.auths.Add(entidad);
-                    _Context.SaveChanges();
-
-                    return Ok(new { entidad.Id, entidad.rutaImg });
-                }
-                else
-                {
-                    return BadRequest("Ningún archivo subido");
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error interno del servidor: {ex}");
-            }
-        }
 
 
 

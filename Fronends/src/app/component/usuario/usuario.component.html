@@ -45,10 +45,7 @@
           <label for="correo">Role:</label>
           <input type="text" name="role" class="form-control" [(ngModel)]="ToListAuths.role" id="correo" placeholder="Ingresa tu correo electrónico">
         </div>
-        <div class="form-group">
-          <label for="correo">Imagen:</label>
-          <input  class="form-control" [(ngModel)]="ToListAuths.rutaImage"  type="file" (change)="onFileSelected($event)" />
-        </div>
+
        
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -59,7 +56,7 @@
 
 <button (click)="subirImagen()">Subir Imagen</button>
 
-{{ToListAuths?.rutaImage}}
+
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" *ngIf="update_user == true" aria-hidden="true">

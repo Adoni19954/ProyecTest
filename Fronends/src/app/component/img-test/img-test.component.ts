@@ -3,57 +3,64 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { ToastrService } from 'ngx-toastr';
 import { image } from '../../models/image';
+import { jsDocComment } from '@angular/compiler';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-img-test',
   templateUrl: './img-test.component.html',
   styleUrls: ['./img-test.component.css']
 })
-export class ImgTestComponent implements OnInit {
+export class ImgTestComponent  {
 
   private archivoSeleccionado: File | null = null;
   images: image[] = [];
- private acu ?: string ;
-  constructor(private services: ServiceService, private toast: ToastrService) {}
+  formSigUp!: FormGroup;
+  selectedFile: File | null = null;
 
-  ngOnInit(): void {
-    this.loadImages();
-  }
+  constructor(private services: ServiceService, private toast: ToastrService, private fb : FormBuilder) {}
 
-  loadImages(): void {
-    this.services.getImages().subscribe(
-      (data: image[]) => {
-        this.images = data;
-        console.log('Images from API:', data);
-      },
-      (error) => {
-        console.error('Error fetching images:', error);
-      }
-    );
-  }
+   ngOnInit(){
+    this.formSigUp = this.fb.group({
+      username : ['',Validators.required],
+      email : ['',Validators.required],
+      password : ['',Validators.required],
+      rutaImg: ['', Validators.required]
+    })
+   }
 
-  onFileSelected(event: any): void {
-    this.archivoSeleccionado = event.target.files?.[0] || null;
-    this.acu = event.target.file?.[0] || null;
-    console.log( this.acu)
-  }
+   
+ 
 
-  subirImagen(): void {
-    if (this.archivoSeleccionado) {
-      const formData = new FormData();
-      formData.append('imagen', this.archivoSeleccionado);
+
+   onFileSelected(event: any) {
+    const fileInput = event.target;
   
-      this.services.SaveImageUser(formData).subscribe(
-        (resultado) => {
-          this.toast.success('Imagen subida exitosamente');
-          this.loadImages();
-        },
-        (error) => {
-          this.toast.error('Error al subir la imagen');
-        }
-      );
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
     }
   }
+
+subirdata2() {
+  if (this.formSigUp.valid && this.selectedFile) {
+    const formData = new FormData();
+    formData.append('username', this.formSigUp.get('username')?.value);
+    formData.append('email', this.formSigUp.get('email')?.value);
+    formData.append('password', this.formSigUp.get('password')?.value);
+    formData.append('rutaImg', this.selectedFile);
+
+    this.services.sigUp(formData).subscribe({
+      next: (res) => {
+        this.toast.success('Usuario registrado');
+      },
+      error: (err) => {
+
+        this.toast.error('No se pudo registrar. Error al subir la imagen.');
+      }
+    });
+  }
+}
+
   
 
   getImageUrl(rutaimg: string | undefined): string {
