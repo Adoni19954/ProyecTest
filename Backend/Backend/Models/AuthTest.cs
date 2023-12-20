@@ -11,6 +11,6 @@ namespace Backend.Models
         public string role { get; set; } = string.Empty;
         public string Token {  get; set; } = string.Empty;
       
-        public byte[] rutaImg { get; set; }
+        public string rutaImg { get; set; }
     }
 }
