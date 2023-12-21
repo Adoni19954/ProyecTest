@@ -28,6 +28,12 @@
                 <small class="text-danger" *ngIf="formSigUp.controls['email'].dirty && formSigUp.hasError('required', 'email')">Se requiere el Usuario</small>
             </div>
 
+            <div class="grupo">
+                <input type="file" class="form-control" formControlName="rutaImg" name="rutaImg" (change)="onImageSelected($event)"  required><span class="barra"></span>
+                
+                <small class="text-danger" *ngIf="formSigUp.controls['rutaImg'].dirty && formSigUp.hasError('required', 'rutaImg')">Se requiere el la imagen</small>
+            </div>
+
         </div>
         
         <button [disabled]="formSigUp.invalid" (click)="sigUp()">Registrar</button>

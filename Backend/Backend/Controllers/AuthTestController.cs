@@ -55,8 +55,8 @@ namespace Backend.Controllers
         }
 
         [HttpPost("register")]
-        [Consumes("multipart/form-data")]
-        public async Task<IActionResult> registro([FromForm] AuthTest authsT)
+        
+        public async Task<IActionResult> registro([FromBody] AuthTest authsT)
         {
             if (authsT == null)
                 return BadRequest("Error del sistema");
@@ -80,7 +80,8 @@ namespace Backend.Controllers
                 var identity = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Role, auths.role),
-                    new Claim(ClaimTypes.Name,$"{auths.username}")
+                    new Claim(ClaimTypes.Name,$"{auths.username}"),
+                    new Claim(ClaimTypes.Upn,$"{auths.rutaImg}")
                 });
 
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);

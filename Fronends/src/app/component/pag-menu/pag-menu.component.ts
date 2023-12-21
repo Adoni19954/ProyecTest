@@ -13,6 +13,9 @@ export class PagMenuComponent {
 
   usernameToke : any | undefined;
   roleToke : any | undefined;
+  imgToken : any | undefined;
+
+
   constructor(private router : Router){}
   
   cerrarSession(){
@@ -20,9 +23,12 @@ export class PagMenuComponent {
     this.router.navigate(['login']);
     
   }
+   
      
   ngOnInit(){
       this.GetTokenUsername();
+      this.MostrarImg();
+      console.log(this.imgToken)
 
   }
 
@@ -47,7 +53,26 @@ export class PagMenuComponent {
     return this.usernameToke = usernameFromToken
    }
 
+GetTokenImg(){
+  const token = localStorage.getItem('Token');
 
-   
+  if(token){
+    const decode : any = jwtDecode(token)
+    if(decode && decode.upn){
+      const image : string = decode.upn
+      return image
+    }
+  }
+  return null
+}
+
+MostrarImg(){
+  const ImageTokenget = this.GetTokenImg();
+ return this.imgToken = ImageTokenget?.replace("C:\\fakepath\\", "/assets/image/")
+
+ 
+}
+ 
+
   
 }

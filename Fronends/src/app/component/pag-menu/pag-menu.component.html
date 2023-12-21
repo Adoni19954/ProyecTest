@@ -27,6 +27,7 @@
     <!-- Agregar la sección para el nombre del usuario -->
     <div class="navbar-text">
       {{  GetTokenUsername() }}
+      <img *ngIf="MostrarImg" [src]="imgToken"  alt="Imagen de Perfil" class="imagen-perfil">
     </div>
   </div>
 </nav>

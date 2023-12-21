@@ -43,6 +43,7 @@ export class ServiceService {
 sigUp(UserObj : any){
     
   return this.http.post<any>(`${environment.ApiUrl}/AuthTest/register`, UserObj)
+  
   }
 
   login(UserObj : any){

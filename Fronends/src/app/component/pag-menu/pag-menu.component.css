@@ -1,0 +1,7 @@
+.imagen-perfil {
+    width: 30px; /* Ajusta el tamaño según tus preferencias */
+    height: 30px;
+    border-radius: 50%; /* Para que la imagen tenga forma de círculo */
+    margin-left: 10px; /* Ajusta el margen según tus preferencias */
+  }
+  

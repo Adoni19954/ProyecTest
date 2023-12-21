@@ -13,7 +13,7 @@ import{ ToastrService} from 'ngx-toastr';
 export class RegistroComponent {
 
   formSigUp!: FormGroup;
-
+  selectedFile? : string;
   constructor(
     private service : ServiceService,
     private fb : FormBuilder,
@@ -25,9 +25,21 @@ export class RegistroComponent {
       this.formSigUp = this.fb.group({
         username : ['', Validators.required],
         password : ['', Validators.required],
-        email : ['', Validators.required]
+        email : ['', Validators.required],
+        rutaImg : ['', Validators.required]
       })
     }
+
+    onImageSelected(event: any) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+      const base64data = reader.result as string;
+      this.selectedFile = base64data;
+
+      };
+      reader.readAsDataURL(file);
+  }
 
     sigUp(){
       if(this.formSigUp.valid){

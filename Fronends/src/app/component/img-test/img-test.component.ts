@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { image } from '../../models/image';
 import { jsDocComment } from '@angular/compiler';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-img-test',
@@ -15,6 +16,7 @@ export class ImgTestComponent {
 
   private archivoSeleccionado: File | null = null;
   images: image[] = [];
+  TolistImage? :image;
   formSigUp!: FormGroup;
   selectedFile?: string;
 
@@ -26,31 +28,13 @@ export class ImgTestComponent {
 
 
 
-
- /* onFileSelected(event: any) {
-    const fileInput = event.target;
-
-    if (fileInput.files && fileInput.files.length > 0) {
-      this.selectedFile = fileInput.files[0];
-      this .formSigUp. patchValue
-        ({
-          rutaImg : this.selectedFile
-        });
-
-      this.formSigUp.get('rutaImg')?.markAsDirty();
-      this.formSigUp.get('rutaImg')?.updateValueAndValidity();
-    }
-  }*/
-
-
-
-
   onImageSelected(event: any) {
           const file = event.target.files[0];
           const reader = new FileReader();
           reader.onloadend = () => {
           const base64data = reader.result as string;
           this.selectedFile = base64data;
+
           };
           reader.readAsDataURL(file);
       }
@@ -63,24 +47,15 @@ export class ImgTestComponent {
       username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      rutaImg: [this.selectedFile, Validators.required]
+      rutaImg: ['', Validators.required]
     })
   }
 
   subirdata2() {
     if (this.formSigUp.valid) {
-      const formData = new FormData();
-      formData.append('username', this.formSigUp.get('username')?.value);
-      formData.append('email', this.formSigUp.get('email')?.value);
-      formData.append('password', this.formSigUp.get('password')?.value);
-      formData.append('rutaImg',this.formSigUp.get('rutaImg')?.value  )
-
-      formData.forEach((value, key) => {
-        console.log(key, value);
-      });
-
-
-      this.services.sigUp(formData).subscribe({
+      console.log(this.formSigUp.value)
+      this.services.sigUp(this.formSigUp.value).subscribe({
+        
         next: (res) => {
           this.toast.success('Usuario registrado');
         },
