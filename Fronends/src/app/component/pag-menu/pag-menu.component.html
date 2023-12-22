@@ -27,7 +27,43 @@
     <!-- Agregar la sección para el nombre del usuario -->
     <div class="navbar-text">
       {{  GetTokenUsername() }}
-      <img *ngIf="MostrarImg" [src]="imgToken"  alt="Imagen de Perfil" class="imagen-perfil">
-    </div>
+      <img data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="MostrarImg" [src]="imgToken"  alt="Imagen de Perfil" class="imagen-perfil">
+      </div>
   </div>
 </nav>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1 class="text-center"> {{  GetTokenUsername() }}</h1>
+        <img  *ngIf="MostrarImg" [src]="imgToken"  alt="Imagen de Perfil2" class="imagen-perfil2">
+
+
+        <form [formGroup]="formSigUp">
+          <div class="form">
+              <div class="grupo">
+                  <label for="">Usuario</label>
+                  <input class = "form-control"  type="text" formControlName="username" name="username" required><span class="barra"></span>
+                  <small class="text-danger" *ngIf="formSigUp.controls['username'].dirty && formSigUp.hasError('required', 'username')">Se requiere el Usuario</small>
+              </div>
+              <div class="grupo">
+                  <label for="">Selecciona una Nueva Imagen de Perfil</label>
+                  <input   type="file" class="form-control" formControlName="rutaImg" name="rutaImg"  (change)="onImageSelected($event)" required><span class="barra"></span>
+                  <small class="text-danger" *ngIf="formSigUp.controls['rutaImg'].dirty && formSigUp.hasError('required', 'rutaImg')">Se requiere el la imagen</small>
+              </div>
+          </div>
+          
+          <button class="btn btn-primary"  [disabled]="formSigUp.invalid" (click)="updateProfile()">Saves</button>
+      </form>
+      </div>
+  </div>
+</div>

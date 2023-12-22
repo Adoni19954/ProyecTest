@@ -81,7 +81,8 @@ namespace Backend.Controllers
                 {
                     new Claim(ClaimTypes.Role, auths.role),
                     new Claim(ClaimTypes.Name,$"{auths.username}"),
-                    new Claim(ClaimTypes.Upn,$"{auths.rutaImg}")
+                    new Claim(ClaimTypes.Upn,$"{auths.rutaImg}"),
+                    new Claim(ClaimTypes.Gender,$"{auths.Id}")
                 });
 
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
@@ -125,6 +126,25 @@ namespace Backend.Controllers
             await _Context.SaveChangesAsync();
             return Ok(await _Context.auths.ToArrayAsync());
 
+        }
+
+        [HttpPut("perfil")]
+        public async Task<IActionResult> ModificationProfile([FromBody]AuthTest auth)
+        {
+            var dbprofile = await _Context.auths.FindAsync(auth.Id);
+
+            if (dbprofile == null)
+                return BadRequest("solicitud no validad");
+
+            dbprofile.username = auth.username; 
+            dbprofile.rutaImg = auth.rutaImg;
+
+           await _Context.SaveChangesAsync();
+            return Ok(new
+            {
+                message = "actualizado"
+            });
+            
         }
 
 

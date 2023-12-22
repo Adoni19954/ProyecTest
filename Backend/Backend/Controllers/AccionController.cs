@@ -63,5 +63,26 @@ namespace Backend.Controllers
             return Ok(await _Context.models.ToArrayAsync());
         }
 
+        [HttpGet("sumass")]
+
+        public async Task<IActionResult> GetSumar(string name)
+        {
+
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest("campo requerido");
+            }
+            var dbsuma = await _Context.models.Where(x => x.Name.Contains(name)).ToArrayAsync();
+
+            if (dbsuma == null || !dbsuma.Any())
+            {
+                return BadRequest("datos no encotrados");
+            }
+              
+            var subsuma = dbsuma;
+       
+            return Ok( subsuma );
+        }
+
     }
 }

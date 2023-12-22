@@ -5,7 +5,10 @@
       
     <table class="table table-hover">
       <thead>
-        <button [disabled]="roles === 'user'" class="btn btn-primary" (click)="NewInitAction()">create</button>
+        <input class="form-control" type="text" [(ngModel)]="buscar" >
+        <button class="btn btn-primary" (click)="buscarGet()">buscar</button>
+        <button [disabled]="roles === 'user'" class="btn btn-primary text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800" (click)="NewInitAction()">create</button>
+
         <tr>
           <th>ID</th>
           <th>NAME</th>

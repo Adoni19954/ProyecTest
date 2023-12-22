@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesAuthsService } from '../../services/services-auths.service';
 import { jwtDecode } from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,7 +19,11 @@ export class AccionDetailComponent {
   ToListAccion? : model;
   user : any | undefined
   roles: any | undefined
-  constructor(private services : ServiceService, private router : Router, private auths : ServicesAuthsService){}
+  buscar : string ='';
+  constructor(private services : ServiceService, 
+    private router : Router,
+     private auths : ServicesAuthsService, 
+     private toastr: ToastrService){}
 
   ngOnInit(){
     this.services.get().subscribe((result : model[]) => (this.models = result))
@@ -36,6 +41,21 @@ export class AccionDetailComponent {
 
   EditAction(models : model){
     this.ToListAccion = models
+  }
+
+  buscarGet() : void{
+     this.services.getLookFor(this.buscar).subscribe((data) =>{
+     this.models = data;
+
+     },
+     (error) =>{
+     this.toastr.error("accio  no encontrada");
+     if(this.buscar == ''){
+      this.services.get().subscribe((result : model[]) => (this.models = result))
+     }
+
+     })
+
   }
 
 }

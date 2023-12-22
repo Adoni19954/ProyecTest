@@ -38,6 +38,10 @@ export class ServiceService {
     return this.http.delete<model[]>(`${environment.ApiUrl}/${this.Url}/${models.id}`)
   }
 
+  public getLookFor(UserObj : any) : Observable<model[]>{
+    return this.http.get<model[]>(`${environment.ApiUrl}/${this.Url}/sumass?name=${name}`)
+  }
+
  /* ----------------------------------------------------------------------------------*/
 
 sigUp(UserObj : any){
@@ -67,6 +71,10 @@ sigUp(UserObj : any){
   SaveImageUser(formData : FormData) : Observable<any>{
     return this.http.post<authTests>(`${environment.ApiUrl}/AuthTest/savesImage`,formData)
 
+  }
+
+  UpdateUserProfile(UserObj : any){
+    return this.http.put<any>(`${environment.ApiUrl}/${this.Urluths}/perfil`,UserObj);
   }
 
 
