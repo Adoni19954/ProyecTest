@@ -10,9 +10,9 @@
 </head>
 <body>
     <form [formGroup]="formSigUp">
-        <div class="form">
-            <h1>Registro</h1>
-            <div class="grupo">
+        <div class="  size-50 mx-auto sm:p-7 md:p-12 lg:p-14 xl:p-20" >
+            <h1 class="sm:text-3x1 md:text-5x1 lg:text-7 font-bold underline">Registro</h1>
+            <div class="grupo ">
                 <input type="text" formControlName="username" name="username" required><span class="barra"></span>
                 <label for="">Usuario</label>
                 <small class="text-danger" *ngIf="formSigUp.controls['username'].dirty && formSigUp.hasError('required', 'username')">Se requiere el Usuario</small>

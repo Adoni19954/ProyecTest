@@ -23,6 +23,7 @@ import { UsuarioComponent } from './component/usuario/usuario.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ImgTestComponent } from './component/img-test/img-test.component';
+import { TestResposiveComponent } from './component/test-resposive/test-resposive.component';
 
 
 
@@ -37,7 +38,8 @@ import { ImgTestComponent } from './component/img-test/img-test.component';
     PagErrorComponent,
     PagMenuComponent,
     UsuarioComponent,
-    ImgTestComponent
+    ImgTestComponent,
+    TestResposiveComponent
 
   ],
   imports: [

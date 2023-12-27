@@ -8,6 +8,7 @@ import { PagErrorComponent } from './component/pag-error/pag-error.component';
 import { ServicesAuthsService as AuthGuard  } from './services/services-auths.service';
 import { UsuarioComponent } from './component/usuario/usuario.component';
 import { ImgTestComponent } from './component/img-test/img-test.component';
+import { TestResposiveComponent } from './component/test-resposive/test-resposive.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path : "img",
     component : ImgTestComponent
+  },
+  {
+    path : "test",
+    component : TestResposiveComponent
   },
   {
     path : "**",

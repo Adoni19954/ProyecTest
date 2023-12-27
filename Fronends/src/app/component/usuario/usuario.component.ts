@@ -18,6 +18,7 @@ export class UsuarioComponent {
   User: authTests[] = [];
   ToListAuths?: authTests;
   Role: any | undefined;
+  BuscarName : string = '';
   private archivoSeleccionado: File | null = null;
 
 
@@ -99,6 +100,19 @@ export class UsuarioComponent {
         }
       );
     }
+  }
+
+  BuscarForUsername() : void{
+   this.services.GetLookForUsername(this.BuscarName).subscribe((data) =>{
+    this.User = data;
+   },
+    (error)=>{
+      this.toastr.error('Username no encontrado');
+     
+        this.services.GetUsuario().subscribe((result: authTests[]) => (this.User = result))
+      
+    }
+   )
   }
 
 

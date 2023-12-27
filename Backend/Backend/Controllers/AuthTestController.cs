@@ -140,11 +140,37 @@ namespace Backend.Controllers
             dbprofile.rutaImg = auth.rutaImg;
 
            await _Context.SaveChangesAsync();
+
+            var newToken = CreateJwt(auth);
+
             return Ok(new
             {
+                Token = newToken,
                 message = "actualizado"
             });
             
+        }
+
+
+        [HttpGet("Buscar")]
+
+        public async Task<IActionResult> LokforUsername(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return BadRequest("se requiere el username");
+            }
+
+            var dbLotFokFor = await _Context.auths.Where(x => x.username.Contains(username)).ToArrayAsync();
+
+            if(dbLotFokFor == null || !dbLotFokFor.Any())
+            {
+                return BadRequest("usuario encontrado");
+            }
+
+            
+
+            return Ok(dbLotFokFor);
         }
 
 

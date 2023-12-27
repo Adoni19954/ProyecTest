@@ -77,6 +77,11 @@ sigUp(UserObj : any){
     return this.http.put<any>(`${environment.ApiUrl}/${this.Urluths}/perfil`,UserObj);
   }
 
+  GetLookForUsername(username : any) :Observable<authTests[]>{
+    return this.http.get<authTests[]>(`${environment.ApiUrl}/${this.Urluths}/Buscar?username=${username}`)
+   
+  }
+
 
   public  isAuthenticated () : boolean{
     const token = localStorage.getItem('Token')

@@ -2,6 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <input class="form-control" type="text" [(ngModel)]="BuscarName" id="">
+    
+      <button class="btn btn-danger" (click)="BuscarForUsername()">buscar</button>
       <table class="table table-bordered border border-2 border-light bdr rounded-3 ">
         <thead>
           <tr>
@@ -54,7 +57,7 @@
 
 </div>
 
-<button (click)="subirImagen()">Subir Imagen</button>
+
 
 
 

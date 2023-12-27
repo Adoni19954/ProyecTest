@@ -1,43 +1,39 @@
 <app-pag-menu></app-pag-menu>
+
 <body>
 
-    <div class="container">
-      
-    <table class="table table-hover">
-      <thead>
-        <input class="form-control" type="text" [(ngModel)]="buscar" >
-        <button class="btn btn-primary" (click)="buscarGet()">buscar</button>
-        <button [disabled]="roles === 'user'" class="btn btn-primary text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800" (click)="NewInitAction()">create</button>
+  <div class="container mx-auto">
 
-        <tr>
-          <th>ID</th>
-          <th>NAME</th>
-          <th>LASTNAME</th>
-          <th>SEXO</th>
-          <th>CEDULA</th>
+    <input class="mt-1 p-1" type="text" [(ngModel)]="buscar">
+    <button class="btn btn-primary sm:btn-lg" (click)="buscarGet()">Buscar</button>
+
+    <table class="table   sm:w-2/3 md:w-3/4 lg:w-4/5 xl:w-5/6">
+
+      <thead>
+        <button [disabled]="roles === 'user'" class="btn btn-primary text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800"
+          (click)="NewInitAction()">Crear</button>
+
+        <tr class="mx-auto">
+          <th class="">Id</th>
+          <th class=" ">Nombre</th>
+          <th class="sm:w-1/6">Apellido</th>
+          <th class="sm:w-1/6">Sexo</th>
+          <th class="sm:w-1/6">Cédula</th>
+          <th class="sm:w-1/6"></th>
         </tr>
-      
+
         <tr *ngFor="let key of models">
-          <td>{{key.id}}</td>
-          <td>{{key.name}}</td>
-          <td>{{key.lastName}}</td>
-          <td>{{key.sexo}}</td>
-          <td>{{key.cedula}}</td>
-          <td ><button [disabled]="roles === 'user'" class="btn btn-danger" (click)="EditAction(key)">edit</button></td>
-       
-          
+          <td class=" m-0 p-2">{{key.id}}</td>
+          <td class="sm:w-1/6">{{key.name}}</td>
+          <td class="sm:w-1/6">{{key.lastName}}</td>
+          <td class="sm:w-1/6">{{key.sexo}}</td>
+          <td class="sm:w-1/6">{{key.cedula}}</td>
+          <td class="sm:w-1/6"><button [disabled]="roles === 'user'" class="btn btn-danger" (click)="EditAction(key)">Editar</button></td>
         </tr>
       </thead>
     </table>
-    
-    <app-accion [models]="ToListAccion" (update)="UpdateAction($event)"></app-accion>
-  
-    </div>
+  </div>
 
-    
-  
-    </body>
+  <app-accion [models]="ToListAccion" (update)="UpdateAction($event)"></app-accion>
 
-
-   
-    
+</body>

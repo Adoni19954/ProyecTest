@@ -15,46 +15,42 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AccionDetailComponent {
 
-  models : model[]=[];
-  ToListAccion? : model;
-  user : any | undefined
+  models: model[] = [];
+  ToListAccion?: model;
+  user: any | undefined
   roles: any | undefined
-  buscar : string ='';
-  constructor(private services : ServiceService, 
-    private router : Router,
-     private auths : ServicesAuthsService, 
-     private toastr: ToastrService){}
+  buscar: string = '';
+  constructor(private services: ServiceService,
+    private router: Router,
+    private auths: ServicesAuthsService,
+    private toastr: ToastrService) { }
 
-  ngOnInit(){
-    this.services.get().subscribe((result : model[]) => (this.models = result))
-     this.auths.tokenDecode();
-      this.roles = this.services.OpenToken();   
+  ngOnInit() {
+    this.services.get().subscribe((result: model[]) => (this.models = result))
+    this.auths.tokenDecode();
+    this.roles = this.services.OpenToken();
   }
 
-  UpdateAction(models : model[]){
+  UpdateAction(models: model[]) {
     this.models = models
   }
 
-  NewInitAction(){
+  NewInitAction() {
     this.ToListAccion = new model()
   }
 
-  EditAction(models : model){
+  EditAction(models: model) {
     this.ToListAccion = models
   }
 
-  buscarGet() : void{
-     this.services.getLookFor(this.buscar).subscribe((data) =>{
-     this.models = data;
-
-     },
-     (error) =>{
-     this.toastr.error("accio  no encontrada");
-     if(this.buscar == ''){
-      this.services.get().subscribe((result : model[]) => (this.models = result))
-     }
-
-     })
+  buscarGet(): void {
+    this.services.getLookFor(this.buscar).subscribe((data) => {
+      this.models = data;
+    },
+      (error) => {
+        this.toastr.error("accio  no encontrada");
+        this.services.get().subscribe((result: model[]) => (this.models = result))
+      })
 
   }
 
