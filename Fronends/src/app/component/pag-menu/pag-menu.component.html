@@ -62,7 +62,7 @@
               </div>
           </div>
           
-          <button class="btn btn-primary"  [disabled]="formSigUp.invalid" (click)="updateProfile()">Saves</button>
+          <button class="btn btn-primary" [(ngModel)]="estadoBoton"   [disabled]="formSigUp.invalid" (click)="updateProfile()">Saves</button>
       </form>
       </div>
   </div>

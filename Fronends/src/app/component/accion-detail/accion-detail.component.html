@@ -3,36 +3,40 @@
 <body>
 
   <div class="container mx-auto">
-
     <input class="mt-1 p-1" type="text" [(ngModel)]="buscar">
     <button class="btn btn-primary sm:btn-lg" (click)="buscarGet()">Buscar</button>
-
-    <table class="table   sm:w-2/3 md:w-3/4 lg:w-4/5 xl:w-5/6">
-
-      <thead>
-        <button [disabled]="roles === 'user'" class="btn btn-primary text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800"
-          (click)="NewInitAction()">Crear</button>
-
-        <tr class="mx-auto">
-          <th class="">Id</th>
-          <th class=" ">Nombre</th>
-          <th class="sm:w-1/6">Apellido</th>
-          <th class="sm:w-1/6">Sexo</th>
-          <th class="sm:w-1/6">Cédula</th>
-          <th class="sm:w-1/6"></th>
-        </tr>
-
-        <tr *ngFor="let key of models">
-          <td class=" m-0 p-2">{{key.id}}</td>
-          <td class="sm:w-1/6">{{key.name}}</td>
-          <td class="sm:w-1/6">{{key.lastName}}</td>
-          <td class="sm:w-1/6">{{key.sexo}}</td>
-          <td class="sm:w-1/6">{{key.cedula}}</td>
-          <td class="sm:w-1/6"><button [disabled]="roles === 'user'" class="btn btn-danger" (click)="EditAction(key)">Editar</button></td>
-        </tr>
-      </thead>
-    </table>
+  
+    <div class="overflow-x-auto">
+      <table class="table sm:w-full md:w-full lg:w-full xl:w-full">
+  
+        <thead>
+          <button [disabled]="roles === 'user'" class="btn btn-primary text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800"
+            (click)="NewInitAction()">Crear</button>
+  
+          <tr class="mx-auto">
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">Id</th>
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">Nombre</th>
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">Apellido</th>
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">Sexo</th>
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">Cédula</th>
+            <th class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12"></th>
+          </tr>
+  
+          <tr *ngFor="let key of models">
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12 m-0 p-2">{{key.id}}</td>
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">{{key.name}}</td>
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">{{key.lastName}}</td>
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">{{key.sexo}}</td>
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">{{key.cedula}}</td>
+            <td class="w-1/6 sm:w-1/12 md:w-1/12 lg:w-1/12 xl:w-1/12">
+              <button [disabled]="roles === 'user'" class="btn btn-danger" (click)="EditAction(key)">Editar</button>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
   </div>
+  
 
   <app-accion [models]="ToListAccion" (update)="UpdateAction($event)"></app-accion>
 

@@ -24,6 +24,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ImgTestComponent } from './component/img-test/img-test.component';
 import { TestResposiveComponent } from './component/test-resposive/test-resposive.component';
+import { ChangesPasswordComponent } from './component/changes-password/changes-password.component';
 
 
 
@@ -39,7 +40,8 @@ import { TestResposiveComponent } from './component/test-resposive/test-resposiv
     PagMenuComponent,
     UsuarioComponent,
     ImgTestComponent,
-    TestResposiveComponent
+    TestResposiveComponent,
+    ChangesPasswordComponent
 
   ],
   imports: [

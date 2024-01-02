@@ -23,7 +23,8 @@ export class PagMenuComponent {
   formSigUp!: FormGroup;
   selectedFile? : string;
   id: any | undefined;
-
+  estadoBoton: boolean = false;
+  
   constructor(private router : Router, 
     private services : ServiceService,
      private fb : FormBuilder,
@@ -65,7 +66,9 @@ export class PagMenuComponent {
   updateProfile(){
     if(this.formSigUp.valid){
     this.services.UpdateUserProfile(this.formSigUp.value).subscribe( next =>{
+      localStorage.clear();
       this.toastr.success('Perfil actualizado correctamente');
+      this.activationToken();
     },
     error =>{
      this.toastr.error('No se pudo actualizar el perfil');
@@ -133,7 +136,13 @@ BuscarIdToken(){
 }
 
 
-
+activationToken(){
+  if(this.estadoBoton ==true){
+   this.BuscarIdToken();
+   this.MostrarImg();
+   this.MostrarUserNameToken();
+  }
+}
  
 
   

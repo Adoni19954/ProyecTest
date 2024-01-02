@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgModule } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { model } from '../models/model';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { jwtDecode } from 'jwt-decode';
@@ -80,6 +80,10 @@ sigUp(UserObj : any){
   GetLookForUsername(username : any) :Observable<authTests[]>{
     return this.http.get<authTests[]>(`${environment.ApiUrl}/${this.Urluths}/Buscar?username=${username}`)
    
+  }
+
+  BuscarPassword(password : any , Id : any ) : Observable<authTests[]>{
+    return this.http.get<authTests[]>(`${environment.ApiUrl}/${this.Urluths}//changes?password=${{password}}&Id=${{Id}}`)
   }
 
 

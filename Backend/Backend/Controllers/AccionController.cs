@@ -36,15 +36,15 @@ namespace Backend.Controllers
 
         [HttpPut]
 
-        public async Task<ActionResult<List<DataContext>>>  PUT(ModelsTest model)
+        public async Task<ActionResult<List<DataContext>>> PUT(ModelsTest model)
         {
             var dbput = await _Context.models.FindAsync(model.Id);
-            if (dbput == null) 
+            if (dbput == null)
                 return BadRequest(ModelState);
             dbput.Name = model.Name;
             dbput.LastName = model.LastName;
             dbput.Sexo = model.Sexo;
-            dbput.cedula =  model.cedula;
+            dbput.cedula = model.cedula;
 
             await _Context.SaveChangesAsync();
             return Ok(await _Context.models.ToArrayAsync());
@@ -55,7 +55,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<List<DataContext>>> DELETE(int id)
         {
             var dbdelete = await _Context.models.FindAsync(id);
-            if(dbdelete == null)
+            if (dbdelete == null)
                 return BadRequest("fue eliminado");
 
             _Context.models.Remove(dbdelete);
@@ -78,11 +78,14 @@ namespace Backend.Controllers
             {
                 return BadRequest("datos no encotrados");
             }
-              
+
             var subsuma = dbsuma;
-       
-            return Ok( subsuma );
+
+            return Ok(subsuma);
         }
+
+
+
 
     }
 }

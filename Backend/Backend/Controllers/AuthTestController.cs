@@ -43,7 +43,7 @@ namespace Backend.Controllers
                 return NotFound(new
                 {
                     message = "Usuario no encotrado"
-                }) ;
+                });
 
             dbauth.Token = CreateJwt(dbauth);
 
@@ -55,7 +55,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("register")]
-        
+
         public async Task<IActionResult> registro([FromBody] AuthTest authsT)
         {
             if (authsT == null)
@@ -77,13 +77,13 @@ namespace Backend.Controllers
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("abcdefghijklmnopqrstuvwx1234ABCD!@#$%^\r\n");
-                var identity = new ClaimsIdentity(new Claim[]
-                {
+            var identity = new ClaimsIdentity(new Claim[]
+            {
                     new Claim(ClaimTypes.Role, auths.role),
                     new Claim(ClaimTypes.Name,$"{auths.username}"),
                     new Claim(ClaimTypes.Upn,$"{auths.rutaImg}"),
                     new Claim(ClaimTypes.Gender,$"{auths.Id}")
-                });
+            });
 
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
 
@@ -108,7 +108,7 @@ namespace Backend.Controllers
                 return BadRequest();
 
             dbauths.role = AuthsT.role;
-        
+
             await _Context.SaveChangesAsync();
             return Ok(await _Context.auths.ToArrayAsync());
         }
@@ -129,26 +129,26 @@ namespace Backend.Controllers
         }
 
         [HttpPut("perfil")]
-        public async Task<IActionResult> ModificationProfile([FromBody]AuthTest auth)
+        public async Task<IActionResult> ModificationProfile([FromBody] AuthTest auth)
         {
             var dbprofile = await _Context.auths.FindAsync(auth.Id);
 
             if (dbprofile == null)
                 return BadRequest("solicitud no validad");
 
-            dbprofile.username = auth.username; 
+            dbprofile.username = auth.username;
             dbprofile.rutaImg = auth.rutaImg;
 
-           await _Context.SaveChangesAsync();
+            await _Context.SaveChangesAsync();
 
-            var newToken = CreateJwt(auth);
+            dbprofile.Token = CreateJwt(auth);
 
             return Ok(new
             {
-                Token = newToken,
+                Token = dbprofile,
                 message = "actualizado"
             });
-            
+
         }
 
 
@@ -163,19 +163,34 @@ namespace Backend.Controllers
 
             var dbLotFokFor = await _Context.auths.Where(x => x.username.Contains(username)).ToArrayAsync();
 
-            if(dbLotFokFor == null || !dbLotFokFor.Any())
+            if (dbLotFokFor == null || !dbLotFokFor.Any())
             {
                 return BadRequest("usuario encontrado");
             }
 
-            
+
 
             return Ok(dbLotFokFor);
         }
 
+        [HttpPut("changes")]
+        public async Task<IActionResult> UpdateChangesPassoword(string password, int Id, string passwordConfin)
+        {
+            var dbpassword = await _Context.auths.FirstOrDefaultAsync(x => x.password.Contains(password) && x.Id == Id);
+            if (dbpassword != null)
+            {
 
+                dbpassword.password = passwordConfin;
 
+                await _Context.SaveChangesAsync();
+                return Ok("contrasena actualizada");
+            }
 
+            return NotFound(new
+            {
+                message = "Usuario no encontrado o contraseña incorrecta"
+            });
+        }
 
     }
 }
