@@ -1,9 +1,9 @@
+import "./chunk-GIVSMWGH.js";
 import {
   CheckboxRequiredValidator,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR
 } from "./chunk-HMXGBQHM.js";
-import "./chunk-GIVSMWGH.js";
 import "./chunk-Y6QPO6CD.js";
 import "./chunk-EI3J624E.js";
 import "./chunk-65U6XV5V.js";

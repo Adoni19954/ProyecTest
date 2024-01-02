@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesAuthsService } from '../../services/services-auths.service';
 import { jwtDecode } from 'jwt-decode';
@@ -22,7 +22,7 @@ export class PagMenuComponent {
   imgToken : any | undefined;
   formSigUp!: FormGroup;
   selectedFile? : string;
-  id: any | undefined;
+ id: any | undefined;
   estadoBoton: boolean = false;
   
   constructor(private router : Router, 
@@ -36,7 +36,7 @@ export class PagMenuComponent {
     
   }
 
-  
+
    
      
   ngOnInit(){

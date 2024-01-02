@@ -9,6 +9,7 @@ import { ServicesAuthsService as AuthGuard  } from './services/services-auths.se
 import { UsuarioComponent } from './component/usuario/usuario.component';
 import { ImgTestComponent } from './component/img-test/img-test.component';
 import { TestResposiveComponent } from './component/test-resposive/test-resposive.component';
+import { ChangesPasswordComponent } from './component/changes-password/changes-password.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path : "test",
     component : TestResposiveComponent
+  },
+  {
+   path: "changespassword",
+   component : ChangesPasswordComponent
   },
   {
     path : "**",

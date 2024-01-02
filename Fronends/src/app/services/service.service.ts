@@ -82,10 +82,10 @@ sigUp(UserObj : any){
    
   }
 
-  BuscarPassword(password : any , Id : any ) : Observable<authTests[]>{
-    return this.http.get<authTests[]>(`${environment.ApiUrl}/${this.Urluths}//changes?password=${{password}}&Id=${{Id}}`)
+  changesPassword(UserObj : any) {
+    return this.http.put<any>(`${environment.ApiUrl}/${this.Urluths}/changes`, UserObj);
   }
-
+  
 
   public  isAuthenticated () : boolean{
     const token = localStorage.getItem('Token')

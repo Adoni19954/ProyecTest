@@ -174,16 +174,19 @@ namespace Backend.Controllers
         }
 
         [HttpPut("changes")]
-        public async Task<IActionResult> UpdateChangesPassoword(string password, int Id, string passwordConfin)
+        public async Task<IActionResult> UpdateChangesPassoword([FromBody] UpdatePassword model)
         {
-            var dbpassword = await _Context.auths.FirstOrDefaultAsync(x => x.password.Contains(password) && x.Id == Id);
+            var dbpassword = await _Context.auths.FirstOrDefaultAsync(x => x.password == model.PasswordConfin && x.Id == model.Id);
             if (dbpassword != null)
             {
 
-                dbpassword.password = passwordConfin;
+                dbpassword.password = model.Password;
 
                 await _Context.SaveChangesAsync();
-                return Ok("contrasena actualizada");
+                return Ok(new
+                {
+                    message = "Contrasena actualizada"
+                });
             }
 
             return NotFound(new
